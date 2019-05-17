@@ -4,22 +4,23 @@ var gifChoices = ["baboon", "aardvark", "badger", "otter", "elephant", "zebra", 
 
 // making the array into buttons for the search
 function makeButtons() {
-  $('#search-button').empty();
+  $('#button-to-click').empty();
   for (var i = 0; i < gifChoices.length; i++) {
     var newButton = $("<button class='button'>" + gifChoices[i] + "</button>");
     $(newButton).attr('id', 'animal-' + gifChoices[i]);
-    $('#search-button').append(newButton);
+    $('#button-to-click').append(newButton);
   };
 };
+
 makeButtons();
 
 // inputting an animal to add to the finder
 $('#submit').on('click', function () {
-  if ('#submit' === '') {
-  } else {
-    var addNewButton = $('input').val();
-    $(gifChoices).html($('<button class="button new-button"></button>'));
-    $('.new-button').text(addNewButton);
+  if ('#submit' !== '') {
+    var addNewButton = $('#input').text();
+    gifChoices.push(addNewButton);
+    makeButtons();
+  }else{   
   }
 })
 
