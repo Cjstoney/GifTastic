@@ -17,11 +17,9 @@ makeButtons();
 $('#submit').on('click', function () {
   if ('#submit' === '') {
   } else {
-    // button function
-    // $('#search-button').empty();
-    var searchInput = $('#submit').text();
-    $(gifChoices).append(searchInput);
-    // append button
+    var addNewButton = $('input').val();
+    $(gifChoices).html($('<button class="button new-button"></button>'));
+    $('.new-button').text(addNewButton);
   }
 })
 
@@ -39,15 +37,18 @@ $('.button').on('click', function () {
 
     .then(function (response) {
       console.log(response)
+      var results = response.data;
 
       for (var index = 0; index < response.data.length; index++) {
-        $('#gif-displays').html(response.data.index[i].images.fixed_height.url);
-
+        var gifDiv = $('<div>');
+        var gifImage = $('<img>');
+        gifImage.attr("src",results[index].images.fixed_height.url)
+        $(gifDiv).append(gifImage)
+        $('#gif-displays').prepend(gifDiv)
       }
 
     })
 
-  // var results = response.data;
 
 
 })
