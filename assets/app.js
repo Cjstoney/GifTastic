@@ -1,5 +1,5 @@
 
-
+// original array for buttons
 var gifChoices = ["baboon", "aardvark", "badger", "otter", "elephant", "zebra", "lion", "cougar", "crocodile", "hippo", "rhino", "tiger"]
 
 // making the array into buttons for the search
@@ -8,24 +8,30 @@ function makeButtons() {
   for (var i = 0; i < gifChoices.length; i++) {
     var newButton = $("<button class='button'>" + gifChoices[i] + "</button>");
     $(newButton).attr('id', 'animal-' + gifChoices[i]);
+    newButton.on('click', getGifs)
     $('#button-to-click').append(newButton);
   };
 };
 
+// calling the function to make a button from the existing array
 makeButtons();
 
-// inputting an animal to add to the finder
-$('#submit').on('click', function () {
+// inputting an animal to add to the array
+$('#submit').on('click', function (e) {
+e.preventDefault()
   if ('#submit' !== '') {
-    var addNewButton = $('#input').text();
-    gifChoices.push(addNewButton);
-    makeButtons();
+    var addNewButton = $('#input').val();
+    console.log(addNewButton)
+    var newButton = $("<button class='button'>" + addNewButton + "</button>");
+    $(newButton).attr('id', 'animal-' + addNewButton);
+    newButton.on('click', getGifs)
+    $('#button-to-click').append(newButton);
   }else{   
   }
 })
 
-// on click function to register array search
-$('.button').on('click', function () {
+// function for handling what to do with the click function
+function getGifs(){
   var animal = $(this).text();
   console.log(animal)
 
@@ -49,6 +55,4 @@ $('.button').on('click', function () {
         $('#gif-displays').prepend(gifDiv)
       }
     })
-})
-
-
+}

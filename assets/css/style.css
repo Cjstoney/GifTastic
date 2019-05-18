@@ -43,6 +43,11 @@ header{
     margin:10px auto;
 }
 
-.gif-container{
+/* .gif-container{
     text-align: center;
+} */
+img{
+    height:100px;
+    max-width: 25%;
+
 }
