@@ -1,4 +1,4 @@
-
+$(document).ready(function(){
 // original array for buttons
 var gifChoices = ["baboon", "aardvark", "badger", "otter", "elephant", "zebra", "lion", "cougar", "crocodile", "hippo", "rhino", "tiger"]
 
@@ -52,7 +52,6 @@ function getGifs(){
         gifImage.attr("src",results[index].images.fixed_height.url)
         $('#gif-displays').prepend(gifImage)
       }
-    })
-
-    
+    }) 
 }
+})
