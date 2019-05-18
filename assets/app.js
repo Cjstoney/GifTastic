@@ -44,15 +44,15 @@ function getGifs(){
     .then(function (response) {
       console.log(response)
       var results = response.data;
+      $("#gif-displays").empty();
 
       for (var index = 0; index < results.length; index++) {
-        var gifDiv = $('<div>');
-        gifDiv.attr("class", "gif-container")
         var gifImage = $('<img>');
         gifImage.attr("class", "gifs")
         gifImage.attr("src",results[index].images.fixed_height.url)
-        $(gifDiv).append(gifImage)
-        $('#gif-displays').prepend(gifDiv)
+        $('#gif-displays').prepend(gifImage)
       }
     })
+
+    
 }
